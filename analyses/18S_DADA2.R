@@ -19,7 +19,7 @@ path_results <- paste0(path_main,"/DADA2_results_18S")
 # Create results directory if it doesn't exist
 if(!dir.exists(path_results)) dir.create(path_results)
 
-# 18S Zhan primer sequences
+# 18S primer sequence: Zhang GK, Chain FJJ, Abbott CL, Cristescu ME. Metabarcoding using multiplexed markers increases species detection in complex zooplankton communities. Evol Appl. 2018 Sep 15;11(10):1901-1914. doi: 10.1111/eva.12694.
 forward_primer=c("AGGGCAAKYCTGGTGCCAGC")
 reverse_primer=c("GRCGGTATCTRATCGYCTT") 
 
@@ -195,7 +195,7 @@ cat("\nSaving sequences\n")
 uniquesToFasta(getUniques(seqtab.nochim), fout= paste0(path_results,"/uniqueSeqs.fasta"),ids=as.character(as.list(md5(names(getUniques(seqtab.nochim))))))
 dna <- readDNAStringSet(paste0(path_results,"/uniqueSeqs.fasta")) # Create a DNAStringSet from the ASVs
 
-## Step 12: Handsoff to Phyloseq
+## Step 12: Hands off to Phyloseq
 cat("\nCreating a phyloseq object\n")
 colnames(seqtab.nochim) <-md5(colnames(seqtab.nochim))
 ps_run <- phyloseq(
@@ -208,7 +208,7 @@ ps_run <- phyloseq(
 # Save the phyloseq object
 saveRDS(ps_run, file = paste0(path_results,"/ps_run.rds"))
 
-# Prepare OTU table for output  
+# Prepare ASVs table for output  
 otab = pstoveg_otu(ps_run) %>% t() %>% as.data.frame()
 otab = cbind(ASVs = rownames(otab), otab)
 write.table(otab, paste0(path_results,"/dada_table.txt"),quote=FALSE,sep="\t", row.names = FALSE)
@@ -226,7 +226,7 @@ ps_run
 
 saveRDS(ps_run, file = paste0(path_results,"/ps_run_norm.rds"))
 
-# Save normalized OTU table
+# Save normalized ASVs table
 otab = pstoveg_otu(ps_run) %>% t() %>% as.data.frame()
 otab = cbind(ASVs = rownames(otab), otab)
 write.table(otab, paste0(path_results,"/dada_table_norm.txt"),quote=FALSE,sep="\t", row.names = FALSE)
