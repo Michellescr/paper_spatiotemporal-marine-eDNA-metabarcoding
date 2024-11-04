@@ -20,7 +20,7 @@ path_fastq <- paste0(path_main,"/fastq_files")
 path_results <- paste0(path_main,"/DADA2_results_COI")
 if(!dir.exists(path_results)) dir.create(path_results)
 
-#COI primer sequences
+#COI primer sequences: Leray M, Yang JY, Meyer CP, Mills SC, Agudelo N, Ranwez V, Boehm JT, Machida RJ. A new versatile primer set targeting a short fragment of the mitochondrial COI region for metabarcoding metazoan diversity: application for characterizing coral reef fish gut contents. Front Zool. 2013 Jun 14;10:34. doi: 10.1186/1742-9994-10-34
 forward_primer=c("GGWACWGGWTGAACWGTWTAYCCYCC"); reverse_primer=c("TANACYTCNGGRTGNCCRAARAAYCA")
 
 #Truncation length and overlap
