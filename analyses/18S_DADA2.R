@@ -1,3 +1,4 @@
+# Load the installed packages
 cat("Loading libraries")
 library(dada2); packageVersion("dada2")
 library(data.table)
