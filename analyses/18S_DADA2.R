@@ -8,6 +8,7 @@ library(theseus)
 library(tidyverse)
 library(Biostrings)
 library(ggpubr)
+library(biohelper)
 
 # Environments
 cutadapt = "/home/john/miniconda3/bin/cutadapt" # path to your cutadapt program. 
